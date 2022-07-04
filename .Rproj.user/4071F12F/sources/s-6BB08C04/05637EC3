@@ -1,0 +1,26 @@
+{
+    "id": "05637EC3",
+    "path": "~/Downloads/mde/man/convertTSV.Rd",
+    "project_path": "man/convertTSV.Rd",
+    "type": "r_doc",
+    "hash": "2465794337",
+    "contents": "",
+    "dirty": false,
+    "created": 1651791291691.0,
+    "source_on_save": false,
+    "relative_order": 11,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1575355260,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1575355260,
+    "read_only": true,
+    "read_only_alternatives": [
+        "R/convert_tsv.R"
+    ]
+}

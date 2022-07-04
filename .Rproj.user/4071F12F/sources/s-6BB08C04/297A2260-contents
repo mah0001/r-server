@@ -1,0 +1,45 @@
+### basekey.validation.R
+###------------------------------------------------------------------------------------------
+### What: script to check whether the selected base keys are unique or not.
+### Time-stamp: <2018-10-24 12:21:27 assyst>
+###-------------------------------------------------------------------------------------------
+
+
+## Input Parameters
+# data file path (csv)
+csvpath <- input[[1]]
+# list of base key variables
+keyVariables <- fromJSON(input[[2]])
+# libary path (R library path embedded in MDE)
+libPath <- input[[3]]
+# directory to load functions
+workingDirectory <- input[[4]]
+
+# load custom functions
+setwd(workingDirectory)
+
+source("fn.common.utilities.R")
+
+# load packages
+load.packages(c('haven', 'readr', 'plyr', 'jsonlite'), libPath)
+
+# read matching variables from CSV
+matchingDF <- read.matchingVariables(keyVariables, csvpath, default="c")
+
+# find the duplicate rows
+duplicateRows <- which(duplicated(matchingDF))
+
+# find first and second occurance duplicate rows
+if(length(duplicateRows) > 0){
+  duplicateIndex <- duplicateRows[1]
+  duplicateRow <- matchingDF[duplicateIndex,]
+  if(class(duplicateRow)!= "data.frame"){
+    duplicateRow <- data.frame(duplicateRow, stringsAsFactors=FALSE)
+    colnames(duplicateRow) <- keyVariables
+  }
+  matchingIndex <- row.names(match_df(matchingDF, duplicateRow, on = keyVariables))
+  firstIndex <- matchingIndex[1]
+  return(c(firstIndex, duplicateIndex))
+} else {
+  return (0)
+}

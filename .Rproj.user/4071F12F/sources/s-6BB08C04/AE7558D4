@@ -1,0 +1,26 @@
+{
+    "id": "AE7558D4",
+    "path": "~/Downloads/opencpu_test_api_call.R",
+    "project_path": null,
+    "type": "r_source",
+    "hash": "0",
+    "contents": "",
+    "dirty": true,
+    "created": 1636511814432.0,
+    "source_on_save": false,
+    "relative_order": 6,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "78,20",
+        "scrollLine": "69"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1656544484,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1656621176904,
+    "read_only": false,
+    "read_only_alternatives": []
+}

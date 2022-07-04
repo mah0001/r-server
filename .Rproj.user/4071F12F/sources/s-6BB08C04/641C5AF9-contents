@@ -1,0 +1,6 @@
+library(opencpu) 
+library(mde) 
+ocpu_start_server(port = 2121, root ="/ocpu", workers = 2, preload = 'mde', on_startup = NULL, no_cache = FALSE)
+
+
+result<-mde::import("WDI2009.dta","DTA","f1",50)

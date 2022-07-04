@@ -1,0 +1,91 @@
+library(curl)
+library(httr)
+library(jsonlite)
+library(devtools)
+
+library(haven)
+library(jsonlite)
+library(readr)
+library(stringi)
+
+install_github("rwebapps/appdemo")
+library(appdemo)
+library(mde)
+
+
+'p19i6.dta'
+
+url = "http://localhost:2121/ocpu/library/mde/R/import/json?force=true&auto_unbox=true&digits=22"
+post_options=list(
+  "freqLimit"=50,
+  "fileId"="F1",
+  "type"="dta",
+  "filepath"= "/Users/m2/Downloads/mde/testdata.dta"
+)
+
+httpResponse <- POST(url, body=post_options)
+data_dictionary=NULL
+
+if(httpResponse$status_code!=200){
+  warning (content(httpResponse, "text"))
+}else{
+  print("success")
+  data_dictionary=fromJSON(content(httpResponse,"text"))
+}
+
+
+
+library(mde)
+x<-mde::import("/Users/m2/Downloads/mde/testdata.dta","DTA")
+
+print(toJSON(x))
+
+
+
+
+url = "http://localhost:2121/ocpu/library/mde/R/upload/json"
+post_options=list(
+  "freqLimit"=50,
+  "fileId"="F1",
+  "type"="dta",
+  "filepath"= "/Users/m2/Downloads/mde/testdata.dta"
+)
+post_options=list()
+
+httpResponse <- POST(url, body=post_options)
+data_dictionary=NULL
+
+if(httpResponse$status_code!=200){
+  warning (content(httpResponse, "text"))
+}else{
+  print("success")
+  data_dictionary=fromJSON(content(httpResponse,"text"))
+}
+
+
+
+
+
+
+url = "http://localhost:2121/ocpu/library/mde/R/import/json?force=true&auto_unbox=true&digits=22"
+post_options=list(
+  "freqLimit"=50,
+  "fileId"="'F1'",
+  "type"="'dta'",
+  "filepath"= "x07997af69a2186"
+)
+
+httpResponse <- POST(url, body=post_options)
+data_dictionary=NULL
+
+if(httpResponse$status_code!=200){
+  warning (content(httpResponse, "text"))
+}else{
+  print("success")
+  data_dictionary=fromJSON(content(httpResponse,"text"))
+}
+
+
+
+x<-mde::import("/Volumes/webdev/nada_74/../nada_data_api/datafiles/central/9c236978dc92bf93d371c448a89cf983/INJURY.csv","CSV")
+print(x)

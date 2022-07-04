@@ -1,0 +1,15 @@
+Package: mde
+Type: Package
+Title: Metadata Editor Scripts
+Version: 0.2.3
+Author: World Bank Group
+Maintainer: World Bank Group <mwelch@worldbank.org>
+Description: This package includes helper functions for various metadata editor operations such as import, export, destring, resquence  etc.
+License: MIT
+Encoding: UTF-8
+Imports: haven, jsonlite, readr, stringi
+Suggests: testthat
+LazyData: true
+RoxygenNote: 6.1.1
+NeedsCompilation: no
+Packaged: 2020-02-18 15:33:45 UTC; anoopx

@@ -1,0 +1,24 @@
+{
+    "id": "5C848E0C",
+    "path": "~/Downloads/mde/R/string_len.R",
+    "project_path": "R/string_len.R",
+    "type": "r_source",
+    "hash": "2455603852",
+    "contents": "",
+    "dirty": false,
+    "created": 1655734464062.0,
+    "source_on_save": false,
+    "relative_order": 15,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1575355260,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1575355260,
+    "read_only": false,
+    "read_only_alternatives": []
+}

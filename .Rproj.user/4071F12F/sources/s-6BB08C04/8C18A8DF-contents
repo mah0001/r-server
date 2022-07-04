@@ -1,0 +1,41 @@
+#harvesting studies using NADAR
+
+library(nadar)
+library(namespace)
+
+registerNamespace('source', loadNamespace('nadar'))
+registerNamespace('target', loadNamespace('nadar'))
+
+source::set_api_key('cbfb021c508c683daec08a6668148f4a')
+source::set_api_url('http://nada-demo.ihsn.org/index.php/api')
+source:set_verbose(TRUE)
+
+#fetch list of studies from source catalog
+datasets<- source::datasets(offset=0,limit=100)
+
+#target repo
+target::set_api_key('eaf305477ec56155bdbed25759f62d58')
+target::set_api_url('http://13.229.65.10/index.php/api/')
+
+target_datasets<- target::datasets(offset=0,limit=100)
+
+
+#get info for a single dataset
+result<-source::nada_http_get(url='catalog/json/49?id_format=id')
+
+#iterate each study to get detailed metadata + resources
+for(dataset_id in datasets$content$datasets$id){
+  
+  new_dataset<-source::nada_http_get(url=paste0('catalog/json/',dataset_id,'?id_format=id'))
+  new_dataset
+  print(dataset_id)
+  
+}
+
+datasets$content$datasets$type[2]
+
+for(row in 1:nrow(datasets$content$datasets)){
+  print(datasets$content$datasets$type[row])
+}
+
+

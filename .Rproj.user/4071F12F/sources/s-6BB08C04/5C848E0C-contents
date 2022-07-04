@@ -1,0 +1,42 @@
+#' @title get string length
+#'
+#' @description Calculate the length of string variable
+#'
+#' @param listOfVariables list of variables
+#' @param datafile input data(csv) file path
+#'
+#' @return A list contains the max length of variables
+#'
+#' @examples  stringLength([ {"internalName" : "uqnr", "type" : "character"} ],'D:\\mde\\f1.csv')
+#'
+#' @export stringLength
+
+stringLength <- function( listOfVariables, datafile ) {
+
+  tryCatch({
+
+    # Read csv header to pick the column names and get the matching variables
+    csvHeader <- as.character(read_csv(file=datafile, n_max = 1, col_types = cols(.default = "c"), col_names = FALSE))
+    matchingVariables <- intersect(listOfVariables$internalName, csvHeader)
+
+    # read data file
+    DF_DATA <- data.frame(.read_data(listOfVariables, file=datafile))
+
+    matchingDF <- DF_DATA[,matchingVariables]
+
+    if (class(matchingDF) == "data.frame") {
+      #Get max of variable
+      maxLengthDF <- sapply(matchingDF, function(x) {
+        c(max(nchar(x), na.rm=T))
+      })
+    } else {
+      maxLengthDF <- max(nchar(matchingDF), na.rm=T)
+    }
+
+    return(list(result='ok', data=maxLengthDF))
+  }, warning = function(war) {
+    return(list(result='warning', message= paste('warning >> ',war)))
+  }, error = function(err) {
+    return(list(result='error', message= paste('error >> ',err)))
+  })
+}
